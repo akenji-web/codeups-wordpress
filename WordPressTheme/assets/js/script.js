@@ -155,90 +155,23 @@ jQuery(function ($) {
     });
   });
 
-  // TODO WordPress化の時に要不要の確認
-  // カテゴリー絞り込み
-  $(function () {
-    var $btn = $('.js-category-button [data-filter]'),
-      $list = $('.js-category-list [data-category]');
-    $btn.on('click', function () {
-      // クリックされたボタンをアクティブにする
-      $btn.removeClass('is-active');
-      $(this).addClass('is-active');
-      // クリックされたボタンのカテゴリを取得
-      var $btnCat = $(this).attr('data-filter');
-      $list.removeClass('is-animate');
-      // クリックされたボタンに対しis-animateを付与する
-      if ($btnCat == 'all') {
-        $list.show().addClass('is-animate');
-      } else {
-        $list.hide().removeClass('is-animate').filter('[data-category = "' + $btnCat + '"]').show().addClass('is-animate');
-      }
-      return false;
-    });
-  });
-
-  // URLパラメーターを取得する関数
-  var urlParams = new URLSearchParams(window.location.search);
+  // Informationのタブ切り替え
+  var urlParams = new URLSearchParams(window.location.search); // URLパラメーターを取得する関数
   // パラメーターの値を取得、パラメータがない場合はデフォルトの1を返す
   var tabId = urlParams.get('tab') || '1';
   // tabIdの値からタブとコンテンツを切り替える
-  document.querySelector("#tab".concat(tabId)).classList.add('is-active');
-  document.querySelector("#tab-content".concat(tabId)).classList.add('is-active');
+  var tabId_query = document.querySelector("#tab".concat(tabId));
+  var tabContent_query = document.querySelector("#tab-content".concat(tabId));
+  if (tabId_query) {
+    tabId_query.classList.add('is-active');
+  }
+  if (tabContent_query) {
+    tabContent_query.classList.add('is-active');
+  }
 
   // ページがロードされたときにスクロール位置をトップに戻す
   window.addEventListener('load', function () {
     window.scrollTo(0, 0);
-  });
-
-  // タブ切り替え
-  $(function () {
-    // // 変数定義
-    // const tabButton = $(".js-tab-button");
-    // const tabContent = $(".js-tab-content");
-
-    // // クエリパラメーターを取得して表示するコンテンツを切り替える
-    // const params = new URLSearchParams(window.location.search);
-    // const tab = params.get('tab');
-    // console.log(tab);
-    // if (tab) {
-    //   document.querySelector(`#tab${tab}`).classList.add('is-active');
-    //   document.querySelector(`#tab${tab}`).classList.add('is-active');
-    // } else {
-    //   document.querySelector('#tab1').classList.add('is-active');
-    // }
-
-    // // タブを表示する関数
-    // function showTab(tab_id) {
-    //   tabButton.removeClass("is-active");
-    //   tabContent.removeClass("is-active");
-
-    //   const index = tab_id.substring(4,5) - 1
-    //   tabButton.eq(index).addClass("is-active");
-    //   $("#" + tab_id).addClass('is-active');
-    // };
-
-    // // 初回ロード時
-    // const hash = window.location.hash.substring(1);
-    // if (hash) {
-    //   showTab(hash);
-    // }
-
-    // // タブボタン押下時にタブ切り替え
-    // tabButton.on("click", function () {
-    //   const index = tabButton.index(this) + 1;
-    //   const tab_id = "tab-" + index;
-    //   window.location.hash = tab_id;
-    //   showTab(tab_id);
-    // });
-
-    // // ハッシュが変更されたときの処理
-    // $(window).on('hashchange', function() {
-    //   location.reload();
-    //   const hash = window.location.hash.substring(1);
-    //   if (hash) {
-    //       showTab(hash);
-    //   }
-    // });
   });
 
   // モーダルウィンドウ

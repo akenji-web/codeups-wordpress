@@ -60,26 +60,9 @@
         ?>
       </ul>
       <!-- カード一覧 -->
-      <?php
-        $campaign_slug = get_query_var('campaign-category');
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        $args = [
-          "post_type" => "campaign",
-          "tax_query" => [
-            [
-              'taxonomy' => 'campaign-category',
-              'field'    => 'slug',
-              'terms'    => $campaign_slug,
-            ],
-          ],
-          "posts_per_page" => 4,
-          "paged" => $paged,
-        ];
-        $the_query = new WP_Query($args);
-      ?>
       <div class="archive-campaign__cards archive-campaign-cards">
-        <?php if ($the_query->have_posts()) : ?>
-          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+        <?php if (have_posts()) : ?>
+          <?php while (have_posts()) : the_post(); ?>
             <div class="archive-campaign-cards__item campaign-card">
               <?php if (has_post_thumbnail()) : ?>
                 <img class="campaign-card__image" src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
@@ -102,19 +85,18 @@
                   <p class="campaign-card__after-price">&yen;<?php echo formatted_price(get_field("custom-campaign-discount-price")); ?></p>
                 </div>
                 <div class="u-desktop">
-                  <p class="campaign-card__main-text text"><?php the_content(); ?></p>
+                  <div class="campaign-card__main-text text"><?php the_content(); ?></div>
                   <p class="campaign-card__date">
                     <time datetime="2023-06-01" itemprop="startDate">2023/6/1</time>-<time datetime="09-30" itemprop="endDate">9/30</time>
                   </p>
                   <p class="campaign-card__attention">ご予約・お問い合わせはコチラ</p>
                   <div class="campaign-card__button">
-                    <a href="#" class="button">contact us<span class="button__arrow"></span></a>
+                    <a href="<?php echo esc_url(home_url("/contact")) ?>" class="button">contact us<span class="button__arrow"></span></a>
                   </div>
                 </div>
               </div>
             </div>
           <?php endwhile; ?>
-        <?php wp_reset_postdata(); ?>
         <?php else : ?>
           <p>記事が投稿されていません</p>
         <?php endif; ?>
@@ -124,7 +106,7 @@
       <div class="top-pagination">
         <?php
           if (function_exists('wp_pagenavi')) {
-            wp_pagenavi(array('query' => $the_query));
+            wp_pagenavi();
           }
         ?>
       </div>

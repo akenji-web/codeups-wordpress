@@ -432,8 +432,19 @@ a {
 	line-height: 1.5; /* 150% */
 }
 
+.blog-card__title {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	overflow: hidden;
+}
+
 .blog-card__text {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+	display: -webkit-box;
 	margin-top: 1rem;
+	overflow: hidden;
 }
 
 .blog-cards {
@@ -1872,6 +1883,10 @@ a {
 	margin-top: 2.0625rem;
 }
 
+.nav__item.nav__item--others {
+	margin-top: 1.3125rem;
+}
+
 .nav__link {
 	color: #fff;
 	font-family: "Noto Sans JP";
@@ -2590,7 +2605,11 @@ a {
 }
 
 .voice-card__title {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
 	margin-top: 0.25rem;
+	overflow: hidden;
 }
 
 .voice-card__image-area {
@@ -2612,6 +2631,13 @@ a {
 .voice-card__body {
 	grid-column: 1/3;
 	grid-row: 2;
+}
+
+.voice-card__text {
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 7; /* 任意の行数を指定 */
+	display: -webkit-box;
+	overflow: hidden;
 }
 
 .voice-cards {

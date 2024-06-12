@@ -22,22 +22,9 @@
       <div class="blog-layout__container">
         <div class="blog-layout__main-contents">
           <!-- ブログカード一覧 -->
-          <?php
-            $year = (get_query_var('year')) ? get_query_var('year') : date('Y'); // URLに年がなければ現在の年を取得
-            $month = (get_query_var('monthnum')) ? get_query_var('monthnum') : date('n'); // URLに月がなければ現在の月を取得
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $args = [
-              'year'      => $year,
-              'monthnum'  => $month,
-              "post_type" => "post",
-              "posts_per_page" => 10,
-              "paged" => $paged,
-            ];
-            $the_query = new WP_Query($args);
-          ?>
           <div class="blog-layout__cards blog-cards blog-cards--2columns">
-            <?php if ($the_query->have_posts()) : ?>
-              <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+            <?php if (have_posts()) : ?>
+              <?php while (have_posts()) : the_post(); ?>
                 <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
                   <figure class="blog-card__image">
                     <?php if (has_post_thumbnail()) : ?>
@@ -53,7 +40,6 @@
                   </div>
                 </a>
               <?php endwhile; ?>
-            <?php wp_reset_postdata(); ?>
             <?php else : ?>
               <p>記事が投稿されていません</p>
             <?php endif; ?>
@@ -63,14 +49,14 @@
           <div class="top-pagination">
             <?php
               if (function_exists('wp_pagenavi')) {
-                wp_pagenavi(array('query' => $the_query));
+                wp_pagenavi();
               }
             ?>
           </div>
         </div>
 
         <!-- サイドバー -->
-        <?php get_template_part('sidebar'); ?>
+        <?php get_template_part('parts/sidebar'); ?>
       </div>
     </div>
   </div>

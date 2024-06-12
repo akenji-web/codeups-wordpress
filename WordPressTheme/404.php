@@ -20,7 +20,7 @@
             <h2 class="error__title">404</h2>
             <p class="error__text">申し訳ありません。<br>お探しのページが見つかりません。</p>
             <div class="error__button">
-              <a href="<?php echo esc_url(home_url()); ?>" class="button button--reverse">page TOP<span class="button__arrow"></span></a>
+              <a href="<?php echo esc_url(home_url("/")); ?>" class="button button--reverse">page TOP<span class="button__arrow"></span></a>
             </div>
           </div>
         </div>
@@ -34,10 +34,10 @@
       <div class="footer__heading">
         <img class="footer__logo" src="<?php echo esc_url(get_theme_file_uri("/assets/images/logo1.png")); ?>" alt="CodeUps">
         <div class="footer__sns-icon">
-          <a href="#" class="footer__facebook">
+          <a href="https://www.facebook.com/" class="footer__facebook"  target="_blank">
             <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/facebooklogo.png")); ?>" alt="facebook">
           </a>
-          <a href="#" class="footer__instagram">
+          <a href="https://www.instagram.com/" class="footer__instagram" target="_blank">
             <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/instagramlogo.png")); ?>" alt="instagram">
           </a>
         </div>
@@ -95,17 +95,20 @@
           </li>
         </ul>
         <ul class="nav__items">
-          <li class="nav__item nav__item--bold">
+          <li class="nav__item">
             <a href="<?php echo esc_url(home_url("/faq")) ?>" class="nav__link nav__link--bold">よくある質問</a>
           </li>
-          <li class="nav__item nav__item--bold">
+          <li class="nav__item nav__item--others">
             <a href="<?php echo esc_url(home_url("/privacypolicy")) ?>" class="nav__link nav__link--bold">プライバシー<br class="u-mobile">ポリシー</a>
           </li>
-          <li class="nav__item nav__item--bold">
+          <li class="nav__item nav__item--others">
             <a href="<?php echo esc_url(home_url("/terms-of-service")) ?>" class="nav__link nav__link--bold">利用規約</a>
           </li>
-          <li class="nav__item nav__item--bold">
+          <li class="nav__item nav__item--others">
             <a href="<?php echo esc_url(home_url("/contact")) ?>" class="nav__link nav__link--bold">お問い合わせ</a>
+          </li>
+          <li class="nav__item nav__item--others">
+            <a href="<?php echo esc_url(home_url("/sitemap")) ?>" class="nav__link nav__link--bold">サイトマップ</a>
           </li>
         </ul>
       </div>

@@ -43,7 +43,18 @@
   line-height: 1.500; /* 150% */
 }
 
+.blog-card__title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
 .blog-card__text {
   margin-top: rem(16);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
 }
 

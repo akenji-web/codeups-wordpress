@@ -2,7 +2,7 @@
 <main>
   <!-- メインビュー -->
   <div class="mv">
-  <picture>
+    <picture>
       <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/page-contact-fv-sp.jpg")); ?>" media="(max-width: 767px)">
       <img class="mv__image" src="<?php echo esc_url(get_theme_file_uri("/assets/images/page-contact-fv.jpg")); ?>" alt="お問い合わせのメイン画像">
     </picture>

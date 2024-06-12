@@ -22,23 +22,26 @@
       <div class="blog-layout__container">
         <div class="blog-layout__main-contents">
           <!-- 投稿詳細 -->
-          <div class="blog-layout__detail blog-detail">
-            <div class="blog-detail__head">
-              <time class="blog-detail__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
-              <h1 class="blog-detail__title"><?php the_title(); ?></h1>
-              <figure class="blog-detail__image">
-                <?php if (has_post_thumbnail()) : ?>
-                  <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
-                <?php else : ?>
-                  <img src="<?php echo esc_url(get_theme_file_uri( "/assets/images/noimage.jpg" )); ?>)" alt="NoImage画像" loading="lazy" decoding="async">
-                <?php endif ; ?>
-              </figure>
-            </div>
-            <div class="blog-detail__content">
-              <?php the_content(); ?>
-            </div>
-          </div>
-
+          <?php if (have_posts()) : ?>
+            <?php while (have_posts()) : the_post(); ?>
+              <div class="blog-layout__detail blog-detail">
+                <div class="blog-detail__head">
+                  <time class="blog-detail__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
+                  <h1 class="blog-detail__title"><?php the_title(); ?></h1>
+                  <figure class="blog-detail__image">
+                    <?php if (has_post_thumbnail()) : ?>
+                      <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
+                    <?php else : ?>
+                      <img src="<?php echo esc_url(get_theme_file_uri( "/assets/images/noimage.jpg" )); ?>)" alt="NoImage画像" loading="lazy" decoding="async">
+                    <?php endif ; ?>
+                  </figure>
+                </div>
+                <div class="blog-detail__content">
+                  <?php the_content(); ?>
+                </div>
+              </div>
+            <?php endwhile; ?>
+          <?php endif; ?>
           <!-- ページネーション -->
           <div class="pagination top-pagination pagination--no-number">
           <?php

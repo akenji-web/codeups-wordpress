@@ -56,19 +56,10 @@
       </ul>
 
       <!-- カード一覧 -->
-      <?php
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        $args = [
-          "post_type" => "voice",
-          "posts_per_page" => 6,
-          "paged" => $paged,
-        ];
-        $the_query = new WP_Query($args);
-      ?>
       <div class="sub-voice__cards voice-cards">
-        <?php if ($the_query->have_posts()) : ?>
-          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-            <a href="<?php the_permalink(); ?>" class="voice-cards__item voice-card">
+        <?php if (have_posts()) : ?>
+          <?php while (have_posts()) : the_post(); ?>
+            <a href="#" class="voice-cards__item voice-card">
               <div class="voice-card__heading">
                 <p class="voice-card__age"><?php the_field("custom-voice-age"); ?></p>
                 <?php
@@ -89,11 +80,10 @@
                 <?php endif ; ?>
               </div>
               <div class="voice-card__body">
-                <p class="voice-card__text text text--green"><?php the_content(); ?></p>
+                <div class="voice-card__text text text--green"><?php the_content(); ?></div>
               </div>
             </a>
           <?php endwhile; ?>
-          <?php wp_reset_postdata(); ?>
         <?php else : ?>
           <p>記事が投稿されていません</p>
         <?php endif; ?>
@@ -103,7 +93,7 @@
       <div class="top-pagination">
         <?php
           if (function_exists('wp_pagenavi')) {
-            wp_pagenavi(array('query' => $the_query));
+            wp_pagenavi();
           }
         ?>
       </div>

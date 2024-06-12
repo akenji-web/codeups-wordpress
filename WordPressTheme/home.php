@@ -22,18 +22,9 @@
       <div class="blog-layout__container">
         <div class="blog-layout__main-contents">
           <!-- ブログカード一覧 -->
-          <?php
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $args = [
-              "post_type" => "post",
-              "posts_per_page" => 10,
-              "paged" => $paged,
-            ];
-            $the_query = new WP_Query($args);
-          ?>
           <div class="blog-layout__cards blog-cards blog-cards--2columns">
-            <?php if ($the_query->have_posts()) : ?>
-              <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+            <?php if (have_posts()) : ?>
+              <?php while (have_posts()) : the_post(); ?>
                 <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
                   <figure class="blog-card__image">
                     <?php if (has_post_thumbnail()) : ?>
@@ -45,11 +36,10 @@
                   <div class="blog-card__body">
                     <time class="blog-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
                     <p class="blog-card__title content-title content-title--blog"><?php the_title(); ?></p>
-                    <p class="blog-card__text text"><?php the_content(); ?></p>
+                    <div class="blog-card__text text"><?php the_content(); ?></div>
                   </div>
                 </a>
               <?php endwhile; ?>
-            <?php wp_reset_postdata(); ?>
             <?php else : ?>
               <p>記事が投稿されていません</p>
             <?php endif; ?>
@@ -59,7 +49,7 @@
           <div class="top-pagination">
             <?php
               if (function_exists('wp_pagenavi')) {
-                wp_pagenavi(array('query' => $the_query));
+                wp_pagenavi();
               }
             ?>
           </div>

@@ -110,6 +110,8 @@ function custom_posts_per_page_voice($query)
         if (is_post_type_archive('voice')) {
             // 表示件数を指定
             $query->set('posts_per_page', 6);
+        } elseif (is_tax('voice-category')) {
+            $query->set('posts_per_page', 6);
         }
     }
 }
@@ -121,6 +123,8 @@ function custom_posts_per_page_campaign($query)
         // カスタム投稿のスラッグを記述
         if (is_post_type_archive('campaign')) {
             // 表示件数を指定
+            $query->set('posts_per_page', 4);
+        } elseif (is_tax('campaign-category')) {
             $query->set('posts_per_page', 4);
         }
     }

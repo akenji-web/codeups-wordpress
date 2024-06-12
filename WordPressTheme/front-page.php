@@ -170,7 +170,7 @@
               <div class="blog-card__body">
                 <time class="blog-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
                 <p class="blog-card__title content-title content-title--blog"><?php the_title(); ?></p>
-                <p class="blog-card__text text"><?php the_content(); ?></p>
+                <div class="blog-card__text text"><?php the_content(); ?></div>
               </div>
             </a>
           <?php endwhile; ?>
@@ -223,7 +223,7 @@
                 <?php endif ; ?>
               </div>
               <div class="voice-card__body">
-                <p class="voice-card__text text text--green"><?php the_content(); ?></p>
+                <div class="voice-card__text text text--green"><?php the_content(); ?></div>
               </div>
             </a>
           <?php endwhile; ?>
