@@ -1,0 +1,56 @@
+@use "global" as *;
+
+.breadcrumb {
+}
+
+.breadcrumb__inner {
+}
+
+.breadcrumb__list {
+  color: $darkgreen;
+  font-family: "Noto Sans JP";
+  font-size: rem(14);
+  font-style: normal;
+  font-weight: $normal;
+  line-height: normal;
+}
+
+.breadcrumb__list--white {
+  color: $white;
+}
+
+// .breadcrumb__item {
+// }
+
+// .breadcrumb__item::after {
+//   content: '';
+//   display: inline-block;
+//   padding: 0 rem(8); /*左右に余白*/
+//   background-image: url(../images/breadcrumb.png);
+//   background-size: contain;
+//   background-position: top;
+//   background-repeat: no-repeat;
+//   width: rem(4);
+//   height: rem(8);
+// }
+
+// .breadcrumb__item:last-child::after {
+//   display: none;
+// }
+
+// .breadcrumb__item.breadcrumb__item--white::after {
+//   background-image: url(../images/breadcrumb-white.png);
+// }
+
+// .breadcrumb__item a {
+//   color: $darkgreen;
+//   font-family: "Noto Sans JP";
+//   font-size: rem(14);
+//   font-style: normal;
+//   font-weight: $normal;
+//   line-height: normal;
+// }
+
+// .breadcrumb__item.breadcrumb__item--white a {
+//   color: $white;
+// }
