@@ -1,4 +1,4 @@
-AuthUserFile /home/c2330188/public_html/demosite-kenji.website/codeups01/.htpasswd
+AuthUserFile /home/c2330188/public_html/demosite-kenji.website/codeups-wordpress/wp-content/themes/WordPressTheme/.htpasswd
 AuthName "Input your ID and Password."
 AuthType Basic
 require valid-user

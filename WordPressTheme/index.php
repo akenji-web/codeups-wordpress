@@ -202,7 +202,7 @@
       <div class="voice__cards voice-cards">
         <?php if ($the_query->have_posts()) : ?>
           <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-            <a href="#" class="voice-cards__item voice-card">
+            <a href="<?php echo esc_url(home_url("/voice")) ?>" class="voice-cards__item voice-card">
               <div class="voice-card__heading">
                 <p class="voice-card__age"><?php the_field("custom-voice-age"); ?></p>
                 <?php

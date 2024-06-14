@@ -81,13 +81,13 @@
               <a href="<?php echo esc_url(home_url("/campaign")) ?>" class="nav__link nav__link--bold">キャンペーン</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">ライセンス取得</a>
+              <a href="<?php echo esc_url(home_url("/campaign-category/license/")) ?>" class="nav__link">ライセンス講習</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">貸切体験ダイビング</a>
+              <a href="<?php echo esc_url(home_url("/campaign-category/trial-diving/")) ?>" class="nav__link">体験ダイビング</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">ナイトダイビング</a>
+              <a href="<?php echo esc_url(home_url("/campaign-category/fun-diving/")) ?>" class="nav__link">ファンダイビング</a>
             </li>
             <li class="nav__item nav__item--bold">
               <a href="<?php echo esc_url(home_url("/about")) ?>" class="nav__link nav__link--bold">私たちについて</a>
@@ -118,13 +118,13 @@
               <a href="<?php echo esc_url(home_url("/price")) ?>" class="nav__link nav__link--bold">料金一覧</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">ライセンス講習</a>
+              <a href="<?php echo esc_url(home_url("/price#license")) ?>" class="nav__link">ライセンス講習</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">体験ダイビング</a>
+              <a href="<?php echo esc_url(home_url("/price#trial-diving")) ?>" class="nav__link">体験ダイビング</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">ファンダイビング</a>
+              <a href="<?php echo esc_url(home_url("/price#fun-diving")) ?>" class="nav__link">ファンダイビング</a>
             </li>
           </ul>
           <ul class="nav__items">

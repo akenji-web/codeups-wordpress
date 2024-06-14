@@ -59,7 +59,7 @@
       <div class="sub-voice__cards voice-cards">
         <?php if (have_posts()) : ?>
           <?php while (have_posts()) : the_post(); ?>
-            <a href="#" class="voice-cards__item voice-card">
+            <a href="<?php echo esc_url(home_url("/voice")) ?>" class="voice-cards__item voice-card">
               <div class="voice-card__heading">
                 <p class="voice-card__age"><?php the_field("custom-voice-age"); ?></p>
                 <?php

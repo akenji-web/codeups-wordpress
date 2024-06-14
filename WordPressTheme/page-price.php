@@ -21,7 +21,7 @@
           $group = SCF::get('price-license');
           if (!empty($group)) :
         ?>
-          <div class="sub-price__table price-table">
+          <div id="license" class="sub-price__table price-table">
             <h2 class="price-table__head">ライセンス講習</h2>
             <table class="price-table__table">
             <?php foreach ($group as $fields ) : ?>
@@ -38,7 +38,7 @@
           $group = SCF::get('price-trial-diving');
           if (!empty($group)) :
         ?>
-          <div class="sub-price__table price-table">
+          <div id="trial-diving" class="sub-price__table price-table">
             <h2 class="price-table__head">体験ダイビング</h2>
             <table class="price-table__table">
             <?php foreach ($group as $fields ) : ?>
@@ -55,7 +55,7 @@
           $group = SCF::get('price-fun-diving');
           if (!empty($group)) :
         ?>
-          <div class="sub-price__table price-table">
+          <div id="fun-diving" class="sub-price__table price-table">
             <h2 class="price-table__head">ファンダイビング</h2>
             <table class="price-table__table">
             <?php foreach ($group as $fields ) : ?>
