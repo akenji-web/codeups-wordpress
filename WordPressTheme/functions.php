@@ -181,3 +181,6 @@ function campaign_selectlist($tag, $unused)
 }
 
 add_filter('wpcf7_form_tag', 'campaign_selectlist', 10, 2);
+
+global $wp_rewrite;
+$wp_rewrite->flush_rules();
