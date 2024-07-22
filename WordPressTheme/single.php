@@ -65,9 +65,5 @@
       </div>
     </div>
   </div>
-
-  <!-- コンタクト -->
-  <?php get_template_part('parts/contact'); ?>
-
 </main>
 <?php get_footer(); ?>

@@ -21,13 +21,13 @@
             <a href="<?php echo esc_url(home_url("/campaign")) ?>" class="nav__link nav__link--bk nav__link--bold">キャンペーン</a>
           </li>
           <li class="nav__item">
-            <a href="<?php echo esc_url(home_url("/campaign-category/license/")) ?>" class="nav__link">ライセンス講習</a>
+            <a href="<?php echo esc_url(home_url("/campaign-category/license/")) ?>" class="nav__link nav__link--bk">ライセンス講習</a>
           </li>
           <li class="nav__item">
-            <a href="<?php echo esc_url(home_url("/campaign-category/trial-diving/")) ?>" class="nav__link">体験ダイビング</a>
+            <a href="<?php echo esc_url(home_url("/campaign-category/trial-diving/")) ?>" class="nav__link nav__link--bk">体験ダイビング</a>
           </li>
           <li class="nav__item">
-            <a href="<?php echo esc_url(home_url("/campaign-category/fun-diving/")) ?>" class="nav__link">ファンダイビング</a>
+            <a href="<?php echo esc_url(home_url("/campaign-category/fun-diving/")) ?>" class="nav__link nav__link--bk">ファンダイビング</a>
           </li>
           <li class="nav__item nav__item--bold">
             <a href="<?php echo esc_url(home_url("/about")) ?>" class="nav__link nav__link--bk nav__link--bold">私たちについて</a>
@@ -87,9 +87,5 @@
       </div>
     </div>
   </div>
-
-  <!-- コンタクト -->
-  <?php get_template_part('parts/contact'); ?>
-
 </main>
 <?php get_footer(); ?>
