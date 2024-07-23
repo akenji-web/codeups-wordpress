@@ -39,47 +39,38 @@
         <p class="heading__subtitle">フォト</p>
       </div>
       <div class="gallery__container">
-        <ul class="gallery__items">
+        <?php
+          $group = SCF::get('about-images');
+          if (!empty($group)) :
+        ?>
+          <ul class="gallery__items">
+            <?php
+              foreach ($group as $fields ) :
+            ?>
+            <li class="gallery__item js-modal-open">
+              <img src="<?php echo esc_url(wp_get_attachment_url($fields['custom-about-image'])); ?>" alt="<?php echo get_post_meta( $fields['custom-about-image'], '_wp_attachment_image_alt', true ); ?>" loading="lazy" decoding="async" >
+            </li>
+            <?php endforeach; ?>
+          </ul>
+          <!-- モーダルウィンドウ -->
           <?php
-            $group = SCF::get('about-images');
+            $count = 1;
             foreach ($group as $fields ) :
           ?>
-          <li class="gallery__item js-modal-open">
-            <img src="<?php echo esc_url(wp_get_attachment_url($fields['custom-about-image'])); ?>" alt="" loading="lazy" decoding="async" >
-          </li>
+          <div class="modal js-modal">
+            <?php if ($count == 1 || $count % 6 == 0 || $count % 6 == 1) :?>
+            <div class="modal__body modal__body--vertical">
+              <img src="<?php echo esc_url(wp_get_attachment_url($fields['custom-about-image'])); ?>" alt="<?php echo get_post_meta( $fields['custom-about-image'], '_wp_attachment_image_alt', true ); ?>">
+            </div>
+            <?php else :?>
+              <div class="modal__body">
+              <img src="<?php echo esc_url(wp_get_attachment_url($fields['custom-about-image'])); ?>" alt="<?php echo get_post_meta( $fields['custom-about-image'], '_wp_attachment_image_alt', true ); ?>">
+            </div>
+            <?php endif ?>
+          </div>
+          <?php $count++; ?>
           <?php endforeach; ?>
-        </ul>
-        <!-- モーダルウィンドウ -->
-        <div class="modal js-modal">
-          <div class="modal__body modal__body--vertical">
-            <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/gallery1.jpg")); ?>" alt="赤い魚の群れの画像">
-          </div>
-        </div>
-        <div class="modal js-modal">
-          <div class="modal__body">
-            <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/gallery2.jpg")); ?>" alt="海辺から空と島が見える様子">
-          </div>
-        </div>
-        <div class="modal js-modal">
-          <div class="modal__body">
-            <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/gallery3.jpg")); ?>" alt="チョウチョウウオの画像">
-          </div>
-        </div>
-        <div class="modal js-modal">
-          <div class="modal__body">
-          <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/gallery4.jpg")); ?>" alt="アブラヤッコの画像">
-          </div>
-        </div>
-        <div class="modal js-modal">
-          <div class="modal__body">
-          <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/gallery5.jpg")); ?>" alt="アカネハナゴイの群れの画像">
-          </div>
-        </div>
-        <div class="modal js-modal">
-          <div class="modal__body  modal__body--vertical">
-            <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/gallery6.jpg")); ?>" alt="黄色いチョウチョウウオの画像">
-          </div>
-        </div>
+        <?php endif ?>
       </div>
     </div>
   </section>

@@ -24,12 +24,16 @@
   <!-- その他のページコンテンツ -->
   <div class="page-other sub-top-main">
     <div class="page-other__inner back-icon">
-      <div class="page-other__container">
-        <h2 class="page-other__title"><?php the_title(); ?></h2>
-        <div class="page-other__contents">
-        <?php the_content(); ?>
+    <?php if (have_posts()) : ?>
+      <?php while (have_posts()) : the_post(); ?>
+        <div class="page-other__container">
+          <h2 class="page-other__title"><?php the_title(); ?></h2>
+          <div class="page-other__contents">
+          <?php the_content(); ?>
+          </div>
         </div>
-      </div>
+      <?php endwhile; ?>
+    <?php endif; ?>
     </div>
   </div>
 </main>

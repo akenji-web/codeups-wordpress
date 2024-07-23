@@ -24,19 +24,16 @@
             'taxonomy' => 'campaign-category',
             'orderby' => 'name',
             'order'   => 'ASC',
-            // 表示するタームの数を指定
-            'number'  => 4
           ]);
 
           // カスタム投稿一覧ページへのURL
           $home_class = (is_post_type_archive()) ? 'is-active' : '';
           $home_link = sprintf(
             //カスタム投稿一覧ページへのaタグに付与するクラスを指定できる
-            '<li class="category-button__item"><a class="tab__link %s" href="%s" alt="%s">ALL</a></li>',
+            '<li class="category-button__item"><a class="tab__link %s" href="%s">ALL</a></li>',
             $home_class,
             // カスタム投稿一覧ページのスラッグを指定
             esc_url(home_url('/campaign')),
-            esc_attr(__('View all posts', 'textdomain'))
           );
           echo sprintf(esc_html__('%s', 'textdomain'), $home_link);
 
@@ -77,13 +74,19 @@
                 <p class="campaign-card__title campaign-card__title--large"><?php the_title(); ?></p>
                 <p class="campaign-card__text">全部コミコミ(お一人様)</p>
                 <div class="campaign-card__price">
-                  <p class="campaign-card__before-price">&yen;<?php echo formatted_price(get_field("custom-campaign-regular-price")); ?></p>
-                  <p class="campaign-card__after-price">&yen;<?php echo formatted_price(get_field("custom-campaign-discount-price")); ?></p>
+                  <?php if (get_field("custom-campaign-regular-price")) :?>
+                  <p class="campaign-card__before-price"><?php echo '&yen;' . formatted_price(get_field("custom-campaign-regular-price")); ?></p>
+                  <?php endif; ?>
+                  <?php if (get_field("custom-campaign-discount-price")) :?>
+                  <p class="campaign-card__after-price"><?php echo '&yen;' . formatted_price(get_field("custom-campaign-discount-price")); ?></p>
+                  <?php endif; ?>
                 </div>
                 <div class="u-desktop">
                   <div class="campaign-card__main-text text"><?php the_content(); ?></div>
                   <p class="campaign-card__date">
-                    <time datetime="2023-06-01" itemprop="startDate">2023/6/1</time>-<time datetime="09-30" itemprop="endDate">9/30</time>
+                    <?php if (get_field("custom-campaign-open-date") && get_field("custom-campaign-close-date")) : ?>
+                    <time datetime="<?php echo formatted_date(get_field("custom-campaign-open-date")) ?>" itemprop="startDate"><?php echo get_field("custom-campaign-open-date"); ?></time>-<time datetime="<?php echo formatted_date(get_field("custom-campaign-close-date")) ?>" itemprop="endDate"><?php echo get_field("custom-campaign-close-date"); ?></time>
+                    <?php endif; ?>
                   </p>
                   <p class="campaign-card__attention">ご予約・お問い合わせはコチラ</p>
                   <div class="campaign-card__button">

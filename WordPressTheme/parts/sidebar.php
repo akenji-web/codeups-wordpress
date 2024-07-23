@@ -1,4 +1,4 @@
-<aside class="blog-layout__side blog-side">
+<aside class="blog-side">
   <!-- 人気記事 -->
   <h2 class="blog-side__heading"><span class="blog-side__heading-icon"></span>人気記事</h2>
   <div class="blog-side__contents popular-cards">
@@ -25,7 +25,7 @@
             <?php endif ; ?>
           </figure>
           <div class="popular-card__body">
-            <time class="popular-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
+            <time class="popular-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m/d'); ?></time>
             <p class="popular-card__title"><?php the_title(); ?></p>
           </div>
         </a>

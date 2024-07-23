@@ -103,6 +103,22 @@ function formatted_price ($num) {
     return number_format($num);
 };
 
+// 日付をdate-time属性用に変換
+function formatted_date ($date) {
+    if (strpos($date, '/')) {
+        return str_replace('/', '-', $date);
+    }
+    return $date;
+}
+
+/* the_archive_title 余計な文字を削除 */
+add_filter( 'get_the_archive_title', function ($title) {
+    if (is_date()) {
+        return $title = get_the_time('Y年n月');
+    }
+    return $title;
+});
+
 function custom_posts_per_page_voice($query)
 {
     if (!is_admin() && $query->is_main_query()) {

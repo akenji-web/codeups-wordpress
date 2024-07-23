@@ -26,7 +26,7 @@
             <?php while (have_posts()) : the_post(); ?>
               <div class="blog-layout__detail blog-detail">
                 <div class="blog-detail__head">
-                  <time class="blog-detail__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
+                  <time class="blog-detail__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m/d'); ?></time>
                   <h1 class="blog-detail__title"><?php the_title(); ?></h1>
                   <figure class="blog-detail__image">
                     <?php if (has_post_thumbnail()) : ?>
@@ -61,7 +61,9 @@
         </div>
 
         <!-- サイドバー -->
-        <?php get_template_part('parts/sidebar'); ?>
+        <div class="blog-layout__side">
+          <?php get_template_part('parts/sidebar'); ?>
+        </div>
       </div>
     </div>
   </div>

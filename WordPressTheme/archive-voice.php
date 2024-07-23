@@ -23,19 +23,16 @@
             'taxonomy' => 'voice-category',
             'orderby' => 'name',
             'order'   => 'ASC',
-            // 表示するタームの数を指定
-            'number'  => 4
           ]);
 
           // カスタム投稿一覧ページへのURL
           $home_class = (is_post_type_archive()) ? 'is-active' : '';
           $home_link = sprintf(
             //カスタム投稿一覧ページへのaタグに付与するクラスを指定できる
-            '<li class="category-button__item"><a class="tab__link %s" href="%s" alt="%s">全て</a></li>',
+            '<li class="category-button__item"><a class="tab__link %s" href="%s">全て</a></li>',
             $home_class,
             // カスタム投稿一覧ページのスラッグを指定
             esc_url(home_url('/voice')),
-            esc_attr(__('View all posts', 'textdomain'))
           );
           echo sprintf(esc_html__('%s', 'textdomain'), $home_link);
 
@@ -61,7 +58,9 @@
           <?php while (have_posts()) : the_post(); ?>
             <a href="<?php echo esc_url(home_url("/voice")) ?>" class="voice-cards__item voice-card">
               <div class="voice-card__heading">
+                <?php if (get_field("custom-voice-age")) : ?>
                 <p class="voice-card__age"><?php the_field("custom-voice-age"); ?></p>
+                <?php endif; ?>
                 <?php
                   $taxonomy_terms = get_the_terms($post->ID, 'voice-category');
                   if ( ! empty( $taxonomy_terms ) ) {

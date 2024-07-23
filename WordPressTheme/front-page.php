@@ -7,8 +7,9 @@
         <div class="swiper-wrapper">
           <?php
             $group = SCF::get('first-view');
-            foreach ($group as $fields ) :
+            if (!empty($group)) :
           ?>
+          <?php foreach ($group as $fields ) : ?>
           <div class="swiper-slide">
             <picture class="mainview__pic">
               <source srcset="<?php echo esc_url(wp_get_attachment_url($fields['custom-top-first-view-sp'])); ?>" media="(max-width: 767px)">
@@ -16,6 +17,7 @@
             </picture>
           </div>
           <?php endforeach; ?>
+          <?php endif; ?>
         </div>
         <div class="mainview__text">
           <p class="mainview__title">diving</p>
@@ -151,7 +153,6 @@
       </div>
       <?php
         $args = [
-          "post_type" => "post",
           "posts_per_page" => 3,
         ];
         $the_query = new WP_Query($args);
@@ -168,7 +169,7 @@
                 <?php endif ; ?>
               </figure>
               <div class="blog-card__body">
-                <time class="blog-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
+                <time class="blog-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m/d'); ?></time>
                 <p class="blog-card__title content-title content-title--blog"><?php the_title(); ?></p>
                 <div class="blog-card__text text"><?php the_content(); ?></div>
               </div>
@@ -265,7 +266,7 @@
               <?php endforeach; ?>
               </ul>
             </div>
-            <?php endif ?>
+            <?php endif; ?>
             <!-- 体験ダイビング -->
             <?php
               $group = SCF::get('price-trial-diving', $target_page_id);
@@ -282,7 +283,7 @@
               <?php endforeach; ?>
               </ul>
             </div>
-            <?php endif ?>
+            <?php endif; ?>
             <!-- ファンダイビング -->
             <?php
               $group = SCF::get('price-fun-diving', $target_page_id);
@@ -299,7 +300,7 @@
               <?php endforeach; ?>
               </ul>
             </div>
-            <?php endif ?>
+            <?php endif; ?>
             <!-- スペシャルダイビング -->
             <?php
               $group = SCF::get('price-special-diving', $target_page_id);
@@ -316,7 +317,7 @@
               <?php endforeach; ?>
               </ul>
             </div>
-            <?php endif ?>
+            <?php endif; ?>
           </div>
           <div class="price__image-area js-color-box">
             <picture>

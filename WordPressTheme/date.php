@@ -11,7 +11,7 @@
       <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/page-blog-fv.jpg")); ?>" media="(max-width: 767px)">
       <img class="mv__image" src="<?php echo esc_url(get_theme_file_uri("/assets/images/page-blog-fv-sp.jpg")); ?>" alt="ブログのメイン画像">
     </picture>
-    <h1 class="mv__text">blog</h1>
+    <h1 class="mv__text"><?php the_archive_title(); ?></h1>
   </div>
 
   <!-- パンくず -->
@@ -34,7 +34,7 @@
                     <?php endif ; ?>
                   </figure>
                   <div class="blog-card__body">
-                    <time class="blog-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
+                    <time class="blog-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m/d'); ?></time>
                     <p class="blog-card__title content-title content-title--blog"><?php the_title(); ?></p>
                     <p class="blog-card__text text"><?php the_content(); ?></p>
                   </div>
@@ -56,7 +56,9 @@
         </div>
 
         <!-- サイドバー -->
-        <?php get_template_part('parts/sidebar'); ?>
+        <div class="blog-layout__side">
+          <?php get_template_part('parts/sidebar'); ?>
+        </div>
       </div>
     </div>
   </div>

@@ -16,17 +16,19 @@
   <div class="faq sub-top-main">
     <div class="faq__inner back-icon">
       <div class="faq__container">
-        <ul class="faq__list faq-list">
         <?php
           $group = SCF::get('faq-accordion');
-          foreach ($group as $fields ) :
+          if (!empty($group)) :
         ?>
+        <ul class="faq__list faq-list">
+        <?php foreach ($group as $fields ) : ?>
           <li class="faq-list__item accordion">
             <p class="accordion__title js-accordion-title"><?php echo $fields['custom-faq-title'] ?></p>
             <p class="accordion__content"><?php echo $fields['custom-faq-content'] ?></p>
           </li>
         <?php endforeach; ?>
         </ul>
+        <?php endif; ?>
       </div>
     </div>
   </div>
